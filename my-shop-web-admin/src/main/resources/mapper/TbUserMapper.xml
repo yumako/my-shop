@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzz.my.shop.web.admin.dao.TbUserDao">
+
+    <sql id="tbUserColumns">
+        a.id,
+        a.username,
+        a.password,
+        a.phone,
+        a.email,
+        a.created,
+        a.updated
+    </sql>
+
+    <select id="selectAll" resultType="TbUser">
+        SELECT
+          <include refid="tbUserColumns"/>
+        FROM
+          tb_user AS a
+    </select>
+
+    <insert id="insert">
+        INSERT INTO tb_user(
+          username,
+          password,
+          phone,
+          email,
+          created,
+          updated
+        )
+        VALUES
+          (
+            #{username},
+            #{password},
+            #{phone},
+            #{email},
+            #{created},
+            #{updated}
+          )
+    </insert>
+
+    <select id="getById" resultType="TbUser">
+        SELECT
+          <include refid="tbUserColumns"/>
+        FROM
+          tb_user AS a
+        WHERE id=#{id}
+    </select>
+
+    <update id="update">
+        UPDATE
+            tb_user
+        SET
+            username = #{username},
+            password = #{password},
+            phone = #{phone},
+            email = #{email},
+            updated = #{updated}
+        WHERE
+            id = #{id}
+    </update>
+
+    <select id="getByEmail" resultType="TbUser">
+        SELECT
+          <include refid="tbUserColumns"/>
+        FROM
+          tb_user AS a
+        WHERE
+          a.email = #{email}
+    </select>
+
+    <select id="search" resultType="TbUser">
+        SELECT
+          <include refid="tbUserColumns"/>
+        FROM
+          tb_user AS a
+        WHERE 1=1
+        <if test="username != null and username != ''">
+            AND username LIKE CONCAT ('%',#{username},'%')
+        </if>
+        <if test="email != null and email != ''">
+            AND email LIKE CONCAT ('%',#{email},'%')
+        </if>
+        <if test="phone">
+            AND phone LIKE CONCAT ('%',#{phone},'%')
+        </if>
+    </select>
+    
+    <delete id="deleteMulti">
+        DELETE FROM tb_user
+        WHERE id IN
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="page" resultType="TbUser" parameterType="java.util.Map">
+        SELECT
+        <include refid="tbUserColumns"/>
+        FROM
+        tb_user AS a
+        <where>
+            <if test="tbUser.username != null and tbUser.username != ''">
+                AND a.username LIKE CONCAT ('%',#{tbUser.username},'%')
+            </if>
+            <if test="tbUser.email != null and tbUser.email != ''">
+                AND a.email LIKE CONCAT ('%',#{tbUser.email},'%')
+            </if>
+            <if test="tbUser.phone != null and tbUser.phone != ''">
+                AND a.phone LIKE CONCAT ('%',#{tbUser.phone},'%')
+            </if>
+        </where>
+        ORDER BY a.updated DESC
+        LIMIT #{start},#{length}
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM tb_user AS a
+        WHERE 1=1
+        <if test="username != null and username != ''">
+            AND a.username LIKE CONCAT ('%',#{username},'%')
+        </if>
+        <if test="email != null and email != ''">
+            AND a.email LIKE CONCAT ('%',#{email},'%')
+        </if>
+        <if test="phone">
+            AND a.phone LIKE CONCAT ('%',#{phone},'%')
+        </if>
+    </select>
+
+</mapper>
