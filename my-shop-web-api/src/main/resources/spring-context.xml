@@ -8,7 +8,7 @@
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd ">
     <!-- 使用 Annotation 自动注册 Bean，在主容器中不扫描 @Controller 注解，在 SpringMVC 中只扫描 @Controller 注解。-->
     <context:annotation-config />
-    <context:component-scan base-package="com.zzz.my.shop.web.admin">
+    <context:component-scan base-package="com.zzz.my.shop.web.api">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
