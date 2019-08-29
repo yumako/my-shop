@@ -50,17 +50,17 @@ public class TbContentServiceImpl implements TbContentService {
         //验证通过
         else {
             tbContent.setUpdated(new Date());
-            //新增文章
+            //新增内容
             if (tbContent.getId() == null) {
 
                 tbContent.setCreated(new Date());
                 tbContentDao.insert(tbContent);
             }
-            //编辑文章
+            //编辑内容
             else {
                 tbContentDao.update(tbContent);
             }
-            return BaseResult.success("保存文章成功");
+            return BaseResult.success("保存内容成功");
         }
     }
 

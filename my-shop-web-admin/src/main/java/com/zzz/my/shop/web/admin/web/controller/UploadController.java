@@ -51,18 +51,17 @@ public class UploadController {
             e.printStackTrace();
         }
 
+        /**
+         * 提供完整的访问服务器内存储图片的路径
+         * scheme:服务端提供的协议 http/https
+         * serverName:服务器名称 localhost/ip/domain
+         * serverPoty:服务器端口
+         */
+        String serverPath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
         if (dropzFile != null){
-            result.put("fileName",UPLOAD_PATH + file.getName());
+            result.put("fileName",serverPath + UPLOAD_PATH + file.getName());
         }
         else {
-            /**
-             * 提供完整的访问服务器内存储图片的路径
-             * scheme:服务端提供的协议 http/https
-             * serverName:服务器名称 localhost/ip/domain
-             * serverPoty:服务器端口
-             */
-            String serverPath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
-
             result.put("errno",0);
             result.put("data",new String[]{serverPath + UPLOAD_PATH + file.getName()});
         }

@@ -1,5 +1,8 @@
 package com.zzz.my.shop.commons.utils;
 
+/**
+ * 正则表达式工具类
+ */
 public class RegexpUtils {
     /**
      * 验证手机号

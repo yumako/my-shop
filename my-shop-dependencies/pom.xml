@@ -36,6 +36,9 @@
         <jackson.version>2.9.5</jackson.version>
         <lombok.version>1.16.18</lombok.version>
         <hibernate-validator.version>5.3.4.Final</hibernate-validator.version>
+        <apache-http.version>4.5.5</apache-http.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <commons-email.version>1.5</commons-email.version>
     </properties>
 
     <dependencyManagement>
@@ -114,6 +117,12 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-email</artifactId>
+                <version>${commons-email.version}</version>
+            </dependency>
+
             <!-- Commons End -->
 
             <!-- Database Begin-->
@@ -167,6 +176,23 @@
                 <version>${jackson.version}</version>
             </dependency>
             <!-- Json End-->
+            <!-- Apache Http Begin -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache-http.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>fluent-hc</artifactId>
+                <version>${apache-http.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${apache-http.version}</version>
+            </dependency>
+            <!-- Apache Http End -->
 
             <!-- Lombok Start -->
             <dependency>

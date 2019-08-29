@@ -8,5 +8,10 @@ import java.util.List;
 @Repository
 public interface TbContentDao {
 
+    /**
+     * 根据 categoryId 查询内容列表
+     * @param tbContent
+     * @return
+     */
     List<TbContent> selectByCategoryId(TbContent tbContent);
 }

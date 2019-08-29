@@ -43,7 +43,7 @@ public class ContentController {
     }
 
     /**
-     *跳转到文章列表页
+     *跳转到内容列表页
      * @param
      * @return java.lang.String
      * @author yumako
@@ -64,7 +64,7 @@ public class ContentController {
     }
 
     /**
-     * 保存用户信息
+     * 保存内容信息
      * 使用 RedirectAttributes 重定向传值
      * @param tbContent
      * @return
@@ -94,10 +94,10 @@ public class ContentController {
         if (!StringUtils.isBlank(ids)){
             String[] idArray = ids.split(",");
             tbContentService.deleteMulti(idArray);
-            baseResult = BaseResult.success("删除文章内容成功");
+            baseResult = BaseResult.success("删除内容成功");
         }
         else {
-            baseResult = BaseResult.fail("删除文章内容失败");
+            baseResult = BaseResult.fail("删除内容失败");
         }
         return baseResult;
     }
