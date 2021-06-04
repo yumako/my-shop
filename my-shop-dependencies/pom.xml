@@ -36,7 +36,7 @@
         <jackson.version>2.9.5</jackson.version>
         <lombok.version>1.16.18</lombok.version>
         <hibernate-validator.version>5.3.4.Final</hibernate-validator.version>
-        <apache-http.version>4.5.5</apache-http.version>
+        <apache-http.version>4.5.13</apache-http.version>
         <kaptcha.version>2.3.2</kaptcha.version>
         <commons-email.version>1.5</commons-email.version>
     </properties>
